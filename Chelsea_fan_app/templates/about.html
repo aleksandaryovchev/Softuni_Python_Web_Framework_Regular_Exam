@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h1 class="display-4 text-center mb-4">About Us</h1>
+        <p class="lead text-center">
+          Welcome to our Chelsea FC Fan Web Application! Join the community of passionate Chelsea supporters.
+        </p>
+
+
+
+        <h2 class="text-center mb-4">Our Mission</h2>
+        <p class="text-center">
+          We're on a mission to unite Chelsea fans worldwide, fostering a space for lively discussions and camaraderie.
+        </p>
+
+        <h2 class="text-center mb-4">What We Offer</h2>
+        <ul class="list-group">
+          <li class="list-group-item">Engage in discussions with fellow fans about matches and players.</li>
+        </ul>
+
+        <div class="text-center mt-5">
+          <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Join Us Today</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+/* style.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #034694;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 133px;
+    background-color: white;
+    color: #034694;
+    border: none;
+    transition: background-color 0.2s, color 0.2s; /* Add smooth transition for background and color changes */
+}
+
+.nav-link:hover {
+    background-color: #034694; /* Highlight with blue background on hover */
+    color: white; /* Change text color to white on hover */
+}
