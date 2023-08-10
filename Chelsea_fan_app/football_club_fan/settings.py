@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'football_club_fan.fan_app',
     'django_countries',
+
 ]
 
 MIDDLEWARE = [

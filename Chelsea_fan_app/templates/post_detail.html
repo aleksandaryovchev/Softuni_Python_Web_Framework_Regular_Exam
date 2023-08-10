@@ -1,7 +1,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <!-- Display other post details and comments here -->
+    <div class="container mt-4">
+        <div class="post-card">
+            <img src="{{ post.image.url }}" class="post-image" alt="{{ post.title }}">
+            <div class="post-details">
+                <div class="post-header">
+                    <img src="{{ post.author.profile.profile_pic.url }}" class="profile-pic" alt="{{ post.author.username }}">
+                    <span class="username">{{ post.author.username }}</span>
+                </div>
+                <div class="post-content">
+                    <h5>{{ post.title }}</h5>
+                    <p>{{ post.content }}</p>
+                    <p class="post-date">{{ post.pub_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Add custom styles to enhance the look and feel */
+        .container {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .post-card {
+            display: flex;
+            border: 1px solid #e6e6e6;
+            background-color: #fff;
+        }
+
+        .post-image {
+            width: 50%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .post-details {
+            width: 50%;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .post-content h5 {
+            margin-top: 0;
+        }
+
+        .post-date {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
 {% endblock %}

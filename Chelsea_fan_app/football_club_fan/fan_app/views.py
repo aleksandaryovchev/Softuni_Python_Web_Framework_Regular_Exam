@@ -1,18 +1,18 @@
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import User, Profile, Post, Comment
-from .forms import RegistrationForm, PostForm, CommentForm, UserProfileForm
+from .models import User, Profile, Post
+from .forms import RegistrationForm, PostForm, UserProfileForm
 from django.contrib.auth import login, logout
 from django.views.generic import FormView
 from django.contrib.auth.models import User, auth
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
 class HomeView(View):
@@ -70,21 +70,24 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'static/../../templates/post_list.html'
     context_object_name = 'posts'
 
 
-class PostDetailView(DetailView):
-    model = Post
+class PostDetailView(View):
     template_name = 'post_detail.html'
-    context_object_name = 'post'
+
+    def get(self, request, *args, **kwargs):
+        post = get_object_or_404(Post, pk=kwargs['pk'])
+        context = {'post': post}
+        return render(request, self.template_name, context)
 
 
 class CreatePostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'create_post.html'
-    success_url = reverse_lazy('post_list')
+    success_url = '/posts/'  # Redirect to the post list page after successful creation
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -5,6 +5,10 @@
 <head>
     <title>Chelsea FC Fan Club</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
@@ -13,7 +17,7 @@
         <nav class="navbar">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
             <a class="nav-link" href="{% url 'about' %}">About</a>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated%}
                 <a class="nav-link" href="{% url 'profile' user.profile.pk %}">Profile</a>
                 <a class="nav-link" href="{% url 'create_post' %}">Create Post</a>
                 <a class="nav-link" href="{% url 'post_list' %}">Posts</a>

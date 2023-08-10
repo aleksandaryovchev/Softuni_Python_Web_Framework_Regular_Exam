@@ -1,9 +1,8 @@
-from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-from .models import Profile, Post, Comment
+from .models import Profile, Post
 from .widgets import BootstrapDateTimePickerInput
 
 
@@ -40,10 +39,4 @@ class UserProfileForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
-
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['text']
+        fields = ['title', 'content', 'image']
